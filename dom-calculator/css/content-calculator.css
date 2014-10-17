@@ -20,7 +20,7 @@ div#rz-dom-calculator:focus {
 }
 
 
-.keys {
+div#rz-dom-calculator .keys {
   overflow: hidden;
   display: block;
   width: 100%;
@@ -28,7 +28,7 @@ div#rz-dom-calculator:focus {
   text-align: center;
 }
 
-.keys span {
+div#rz-dom-calculator .keys span {
   display: inline-block;
 	position: relative;
 	top: 0;
@@ -42,43 +42,53 @@ div#rz-dom-calculator:focus {
 	text-align: center;
 	user-select: none;
 	transition: all 0.2s ease;
+  visibility: visible;
 }
 
-span.eval {
+div#rz-dom-calculator span.eval {
 	background: #f1ff92;
 	color: #888e5f;
 }
 
-span.clear {
+div#rz-dom-calculator span.clear-result {
   background: #FF6262;
 	color: white;
+  height: auto !important;
+  visibility: visible !important;
 }
 
 /* Some hover effects */
-.keys span:hover, .keys span.active {
+div#rz-dom-calculator .keys span:hover, div#rz-dom-calculator .keys span.active {
   background: #6B56D2;
 	color: white;
 }
 
-.keys span.eval:hover {
+
+div#rz-dom-calculator .keys span.active {
+  background: #6B56D2;
+	color: white;
+}
+
+
+div#rz-dom-calculator .keys span.eval:hover {
 	background: #abb850;
 	color: #ffffff;
 }
 
-span.clear:hover {
+div#rz-dom-calculator span.clear:hover {
 	background: #f68991;
 	color: white;
 }
 
-.keys span.eval:active {
+div#rz-dom-calculator .keys span.eval:active {
 	box-shadow: 0px 0px #717a33;
 }
 
-.top span.clear:active {
+div#rz-dom-calculator .top span.clear:active {
 	box-shadow: 0px 0px #d3545d;
 }
 
-.screen {
+div#rz-dom-calculator .screen {
 	height: 30px;
 	width: 100%;
 	float: left;

@@ -36,7 +36,7 @@ var calculator = {
   insertDiv: function() {
     this.sum = $.cookie('rz-dom-calculator') ? $.cookie('rz-dom-calculator') : 0;
     $("body").find("#rz-dom-calculator").remove();
-    $("body").append("<div id='rz-dom-calculator' tabindex='1000' style='z-index: 1000;'><div class='dragger'></div><div class='screen'><ul class='result'><li>"+this.sum+"</li></ul></div><div class='keys'><span class='clear'>c</span><span class='operator plus active' data-operation='+'>+</span><span class='operator minus' data-operation='-'>-</span><span class='operator multiplication' data-operation='*'>x</span><span class='operator division' data-operation='/'>÷</span></div></div>");
+    $("body").append("<div id='rz-dom-calculator' tabindex='1000' style='z-index: 1000;'><div class='dragger'></div><div class='screen'><ul class='result'><li>"+this.sum+"</li></ul></div><div class='keys'><span class='clear-result'>c</span><span class='operator plus active' data-operation='+'>+</span><span class='operator minus' data-operation='-'>-</span><span class='operator multiplication' data-operation='*'>x</span><span class='operator division' data-operation='/'>÷</span></div></div>");
     var children = $('body').children();
     var maxZindex = 0;
     children.map(function(index, item){
@@ -67,10 +67,13 @@ var calculator = {
         distinctElems[tagname] = true;
         $(tagname).mouseup(function(e){
           e.stopPropagation();
+        if (!$(this).parents('div#rz-dom-calculator').length) {
           $(this).textHighlighter({
               onAfterHighlight: function(highlights, range) {
                   currentSelection = parseFloat(range) ? parseFloat(range) : 0;
-
+                  if(self.activeOperation == "*" && self.sum == 0) {
+                    self.sum = 1;
+                  }
                   self.sum = self.sum + self.activeOperation + currentSelection;
                   self.sum = eval(self.sum);
                   result = $("#rz-dom-calculator .screen .result");
@@ -83,6 +86,7 @@ var calculator = {
                   $('#rz-dom-calculator').focus();
               }
           });
+        }
         });
       }
     });
@@ -98,7 +102,7 @@ var calculator = {
         if($(elem).data('operation') == key) {
           $(elem).click();
         } else if(key == 'c' || key == 'C') {
-          $this.find('.clear').click();
+          $this.find('.clear-result').click();
         }
       });
       return true;
@@ -111,9 +115,10 @@ var calculator = {
       $(this).siblings().removeClass('active');
     });
 
-    calc.find('.keys .clear').click(function(){
+    calc.find('.keys .clear-result').click(function(){
       calc.find('.result li').remove();
       self.sum = 0;
+      //$.cookie('rz-dom-calculator', 0);
       calc.find('.result').css('margin-top', 0);
       $('.rz-dom-calculator-highlight').removeClass('rz-dom-calculator-highlight');
     });
@@ -126,6 +131,7 @@ var calculator = {
   off: function(){
     $.cookie('rz-dom-calculator', this.sum, { expires: 1 });
     $('#rz-dom-calculator').length ? $('#rz-dom-calculator').remove() : console.log('dom calculator doesn\'t exists');
+    $('.rz-dom-calculator-highlight').removeClass('rz-dom-calculator-highlight');
   }
 };
 
