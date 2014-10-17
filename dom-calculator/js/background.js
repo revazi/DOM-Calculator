@@ -7,9 +7,7 @@ var calcManager = function(toggle, tab) {
     chrome.tabs.executeScript(tab.id, {file: "/js/jquery.min.js"});
     chrome.tabs.executeScript(tab.id, {file: "/js/jquery.cookie.js"});
     chrome.tabs.executeScript(tab.id, {file: "/js/jquery.highlighter.min.js"});
-
     chrome.tabs.executeScript(tab.id, {file: "/js/content-calculator.js"});
-    //chrome.tabs.executeScript(tab.id, {code: "calculator ? calculator.init() : console.log('calculator object doesn\'t exists')"});
   } else {
     chrome.browserAction.setIcon({path: "/img/off-calc.png", tabId:tab.id});
     chrome.tabs.executeScript(tab.id, {code: "typeof calculator !== 'undefined' ? calculator.off() : console.log('calculator is not on');"});
