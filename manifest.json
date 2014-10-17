@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "name": "DOM Calculator",
+  "description": "Calculates the dom elements.",
+  "version": "1.0",
+  "icons": {"128": "img/off-calc.png"},
+  "background": {
+    "persistent": false,
+    "scripts": ["/js/background.js"]
+  },
+  "permissions": [
+    "<all_urls>",
+    "tabs"
+  ],
+  "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": [ "/js/jquery.min.js",
+                "/js/jquery.highlighter.min.js"
+              ],
+        "css": ["/css/content-calculator.css"]
+      }
+    ],
+  "browser_action": {
+    "default_icon": "img/off-calc.png"
+  }
+}
