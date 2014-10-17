@@ -1,24 +1,14 @@
 div#rz-dom-calculator {
   display: block;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  color: grey;
-}
-div#rz-dom-calculator {
-  display: block;
-  position: fixed;
   top: 10px;
   left: calc(100% - 195px);
   width: 190px;
 	padding: 4px 8px 4px 8px;
 	background: #9dd2ea;
   background: #558DA6;
-	/*background: linear-gradient(#9dd2ea, #8bceec);*/
 	border-radius: 3px;
   border-top-left-radius: 0px;
-  /*box-shadow: 0px 4px #009de4;*/
   outline: none;
   transition: box-shadow 0.2s ease;
   border: 1px solid rgb(207, 207, 207);
@@ -32,7 +22,6 @@ div#rz-dom-calculator:focus {
 
 .keys {
   overflow: hidden;
-  width: 30px;
   display: block;
   width: 100%;
   position: relative;
@@ -45,70 +34,48 @@ div#rz-dom-calculator:focus {
 	top: 0;
 	cursor: pointer;
 	width: 30px;
-	/*height: 18px;*/
   line-height: 20px;
 	background: white;
 	border-radius: 3px;
-	/*box-shadow: 0px 4px rgba(0, 0, 0, 0.2);*/
-	margin: 0 2px 6px;
+	margin: 5px 2px 2px;
 	color: #888;
 	text-align: center;
 	user-select: none;
 	transition: all 0.2s ease;
 }
 
-
-
-
-
 span.eval {
 	background: #f1ff92;
-	/*box-shadow: 0px 4px #9da853;*/
 	color: #888e5f;
 }
 
 span.clear {
-	background: #ff9fa8;
   background: #FF6262;
-	/*box-shadow: 0px 4px #ff7c87;*/
 	color: white;
 }
 
 /* Some hover effects */
 .keys span:hover, .keys span.active {
-	background: #9c89f6;
   background: #6B56D2;
-	/*box-shadow: 0px 4px #6b54d3;*/
 	color: white;
 }
 
 .keys span.eval:hover {
 	background: #abb850;
-	/*box-shadow: 0px 4px #717a33;*/
 	color: #ffffff;
 }
 
 span.clear:hover {
 	background: #f68991;
-	/*box-shadow: 0px 4px #d3545d;*/
 	color: white;
 }
 
-/* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
-
-
 .keys span.eval:active {
 	box-shadow: 0px 0px #717a33;
-	/*top: 4px;*/
 }
 
 .top span.clear:active {
-	/*top: 4px;*/
 	box-shadow: 0px 0px #d3545d;
-}
-
-.keys span {
-  margin-top: 5px;
 }
 
 .screen {
@@ -119,8 +86,6 @@ span.clear:hover {
 	padding: 0;
 	background: rgba(0, 0, 0, 0.2);
 	border-radius: 3px;
-	/*box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);*/
-	/* Typography */
 	font-size: 14px;
 	line-height: 150%;
 	color: white;
