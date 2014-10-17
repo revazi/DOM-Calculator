@@ -71,9 +71,6 @@ var calculator = {
           $(this).textHighlighter({
               onAfterHighlight: function(highlights, range) {
                   currentSelection = parseFloat(range) ? parseFloat(range) : 0;
-                  if(self.activeOperation == "*" && self.sum == 0) {
-                    self.sum = 1;
-                  }
                   self.sum = self.sum + self.activeOperation + currentSelection;
                   self.sum = eval(self.sum);
                   result = $("#rz-dom-calculator .screen .result");
