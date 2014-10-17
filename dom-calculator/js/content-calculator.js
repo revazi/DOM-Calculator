@@ -5,7 +5,6 @@ var calculator = {
     x: 0,
     y: 0,
     init: function(elem) {
-      var self = this;
       $('body').mousemove(function(e){
           self.x = e.clientX || e.pageX;
           self.y = e.clientY || e.pageY;
@@ -35,7 +34,9 @@ var calculator = {
     });
   },
   insertDiv: function() {
-    $("body").append("<div id='rz-dom-calculator' tabindex='1000' style='z-index: 1000;'><div class='dragger'></div><div class='screen'><ul class='result'><li>0</li></ul></div><div class='keys'><span class='clear'>c</span><span class='operator plus active' data-operation='+'>+</span><span class='operator minus' data-operation='-'>-</span><span class='operator multiplication' data-operation='*'>x</span><span class='operator division' data-operation='/'>÷</span></div></div>");
+    this.sum = $.cookie('rz-dom-calculator') ? $.cookie('rz-dom-calculator') : 0;
+    $("body").find("#rz-dom-calculator").remove();
+    $("body").append("<div id='rz-dom-calculator' tabindex='1000' style='z-index: 1000;'><div class='dragger'></div><div class='screen'><ul class='result'><li>"+this.sum+"</li></ul></div><div class='keys'><span class='clear'>c</span><span class='operator plus active' data-operation='+'>+</span><span class='operator minus' data-operation='-'>-</span><span class='operator multiplication' data-operation='*'>x</span><span class='operator division' data-operation='/'>÷</span></div></div>");
     var children = $('body').children();
     var maxZindex = 0;
     children.map(function(index, item){
@@ -123,10 +124,14 @@ var calculator = {
     this.dragAndDrop();
   },
   off: function(){
+    $.cookie('rz-dom-calculator', this.sum, { expires: 1 });
     $('#rz-dom-calculator').length ? $('#rz-dom-calculator').remove() : console.log('dom calculator doesn\'t exists');
   }
 };
 
 $(document).ready(function(){
   calculator.init();
+  $(window).on('beforeunload', function(){
+    calculator.off();
+  });
 });
