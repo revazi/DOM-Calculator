@@ -115,7 +115,7 @@ var calculator = {
     calc.find('.keys .clear-result').click(function(){
       calc.find('.result li').remove();
       self.sum = 0;
-      //$.cookie('rz-dom-calculator', 0);
+      $.cookie('rz-dom-calculator', 0);
       calc.find('.result').css('margin-top', 0);
       $('.rz-dom-calculator-highlight').removeClass('rz-dom-calculator-highlight');
     });
