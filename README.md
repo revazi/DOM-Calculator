@@ -5,8 +5,8 @@ DOM-Calculator is a google chrome extension that enables user to select part of 
 
 
 ## Notes
- - extension is under development
- - it's not available on chrom web store.
+ - Extension is under development.
+ - It's not available on chrome web store.
 
 
 ## Licence
